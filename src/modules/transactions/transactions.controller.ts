@@ -10,7 +10,13 @@ export async function transactionCreateHandler (
   reply: FastifyReply
 ) {
   try {
-    const data = await createTransactionSchema.parseAsync(request.body);
+    let data = await createTransactionSchema.parseAsync(request.body);
+    let card_number = data.card_number
+    if(data.method === 'credit_card' && data.card_number){
+      const card_number_length = data.card_number.length ;
+      card_number = data.card_number?.slice(card_number_length - 4);
+      data = {...data, card_number}
+    }
     const transaction = await createTransaction(data);
     createPayablesHandler(transaction);
     return reply.code(201).send(transaction);

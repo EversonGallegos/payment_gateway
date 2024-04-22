@@ -1,7 +1,6 @@
-import { date, z } from 'zod';
+import { z } from 'zod';
 import { buildJsonSchemas } from 'fastify-zod';
-import isValidCPF from './helpers/is_valid_cpf';
-import isValidCreditCardNumber from './helpers/is_valid_credit_card';
+import { isValidCPF, isValidCreditCardNumber } from './helpers/validation';
 
 const schemaCore = {
   amount: z.number().int(),
@@ -10,8 +9,8 @@ const schemaCore = {
   name: z.string(),
   cpf: z.string().refine((value) => isValidCPF(value)),
   card_number: z.string().optional().nullable(),
-  valid: z.string().length(4).optional().nullable(),
-  cvv: z.string().length(3).optional().nullable(),
+  valid: z.number().optional().nullable(),
+  cvv: z.number().optional().nullable(),
 }
 
 export const createTransactionSchema = z.object({
@@ -23,7 +22,7 @@ export const createTransactionSchema = z.object({
   }
   return true;
 }, {
-  message: 'Credit card fields must be provided if method is "credit_card" and credit card number must be valid',
+  message: 'CVV, valid must be provided if method is "credit_card" and credit card number must be valid',
   path: []
 });
 
@@ -39,6 +38,8 @@ export const { schemas: transactionSchemas, $ref } = buildJsonSchemas({
   createTransactionSchema,
   createTransactionResponseSchema,
   transactionsResponseSchema
+}, {
+  $id: 'transactions'
 })
 
 export type TransactionCreateInput = z.infer<typeof createTransactionSchema>
