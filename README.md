@@ -1,27 +1,32 @@
-##Payment Gateway
+### Payment Gateway
 
-#Stack do projeto:
+## Instalação
 
-1. Fastify - Servidor web
-2. Typescript - Tipos
-3. Docker - 
-4. Zod
-5. Postgres
-6. Prisma
-7. Swagger
+1. Clone do projeto
+2. Executar o "docker compose up -d" no terminal
+3. Baixar as dependências do projeto com "yarn install"
+4. Executar o servidor com "yarn dev"
 
-#Scripts
+## Tecnologias Utilizadas
 
-dev:
+- **Fastify**: Framework web para Node.js, conhecido por sua performance e baixa sobrecarga.
+- **TypeScript**: Linguagem de programação que adiciona tipos estáticos ao JavaScript.
+- **Docker**: Plataforma de software para criar, implantar e executar aplicativos em contêineres.
+- **Zod**: Biblioteca de validação de esquemas escrita em TypeScript.
+- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional de código aberto.
+- **Prisma**: Ferramenta de banco de dados para Node.js e TypeScript.
+- **Swagger**: Estrutura de ferramentas para projetar, criar e documentar APIs RESTful.
 
-- tsnd: Inicia o ts-node-dev, que é uma ferramenta para desenvolvimento TypeScript que permite reinicialização automática do servidor Node.js sempre que arquivos são modificados.
-- params:
+## Scripts
+
+# dev:
+
+- **tsnd**: Inicia o ts-node-dev, que é uma ferramenta para desenvolvimento TypeScript que permite reinicialização automática do servidor Node.js sempre que arquivos são modificados.
+- **params**:
   --respawn: Esta opção indica que o ts-node-dev deve reiniciar o processo do Node.js quando necessário, por exemplo, após uma modificação nos arquivos.
   --transpile-only: Esta opção instrui o TypeScript a apenas transpilar o código TypeScript para JavaScript, sem realizar checagem de tipos. Isso pode melhorar significativamente o tempo de compilação, especialmente em projetos grandes.
   --exit-child: Esta opção indica que o processo filho (o processo do Node.js) deve ser encerrado quando o processo principal (o ts-node-dev) terminar. Isso garante que todos os processos relacionados sejam encerrados adequadamente.
 
-
-#Documentação da API
+## Documentação da API
 
 /docs
-
