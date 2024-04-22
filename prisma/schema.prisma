@@ -29,7 +29,7 @@ model Transaction {
   description String
   method      PaymentMethod
   name        String
-  cpf         String        @unique
+  cpf         String
   card_number String?
   valid       String?
   cvv         String?
