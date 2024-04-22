@@ -5,7 +5,8 @@
 1. Clone do projeto [https://github.com/EversonGallegos/payment_gateway.git]
 2. Executar o container docker com "docker compose up -d" no terminal
 3. Baixar as dependências do projeto com "yarn install"
-4. Executar o servidor com "yarn dev"
+4. Gerar as migrations do prisma com "npx prisma migrate dev --name init"
+5. Executar o servidor com "yarn dev"
 
 ## Tecnologias Utilizadas
 
