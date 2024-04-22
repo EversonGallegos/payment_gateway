@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Mapeie a porta do host para a porta do container (opcional, dependendo do uso)
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://admin:admin@127.0.0.1:5432/pagouai?schema=public # Substitua as credenciais conforme necessário
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: pagouai
+    ports:
+      - "5432:5432" # Mapeie a porta do host para a porta do container (opcional, dependendo do uso)
