@@ -19,3 +19,9 @@ dev:
   --respawn: Esta opção indica que o ts-node-dev deve reiniciar o processo do Node.js quando necessário, por exemplo, após uma modificação nos arquivos.
   --transpile-only: Esta opção instrui o TypeScript a apenas transpilar o código TypeScript para JavaScript, sem realizar checagem de tipos. Isso pode melhorar significativamente o tempo de compilação, especialmente em projetos grandes.
   --exit-child: Esta opção indica que o processo filho (o processo do Node.js) deve ser encerrado quando o processo principal (o ts-node-dev) terminar. Isso garante que todos os processos relacionados sejam encerrados adequadamente.
+
+
+#Documentação da API
+
+/docs
+
