@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { TransactionCreateInput, createTransactionSchema } from "./transaction.schema";
 import { createTransaction, getTransactions } from "./transactions.services";
+import { createPayablesHandler } from "../payables/payables.controller";
 
 export async function transactionCreateHandler (
   request: FastifyRequest<{
@@ -10,10 +11,11 @@ export async function transactionCreateHandler (
 ) {
   try {
     const data = await createTransactionSchema.parseAsync(request.body);
-    const transaction = await createTransaction(data)
-    reply.code(201).send(transaction);
+    const transaction = await createTransaction(data);
+    createPayablesHandler(transaction);
+    return reply.code(201).send(transaction);
   } catch (error) {
-    reply.code(400).send({ message: 'Invalid request', error });
+    return reply.code(422).send({ message: 'Invalid request', error });
   }
 }
 
