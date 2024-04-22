@@ -6,6 +6,22 @@ export async function createTransaction ( data: TransactionCreateInput ) {
   return transaction;
 }
 
-export async function getTransactions () {
+export async function getAllTransactions () {
   return await prisma.transaction.findMany();
+}
+
+export async function getTransactionsByID (id: number) {
+  return await prisma.transaction.findUnique({
+    where: {
+      id
+    }
+  });
+}
+
+export async function getTransactionsByMethod (method: 'pix' | 'credit_card') {
+  return await prisma.transaction.findMany({
+    where: {
+      method
+    }
+  });
 }

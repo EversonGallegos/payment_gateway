@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { transactionCreateHandler, getAllTransactions } from "./transactions.controller";
+import { transactionCreateHandler, getTransactionsHandler } from "./transactions.controller";
 import { $ref } from "./transaction.schema";
 
 async function transactionsRoutes (server: FastifyInstance) {
@@ -9,7 +9,7 @@ async function transactionsRoutes (server: FastifyInstance) {
       body: $ref('createTransactionSchema'),
       response: {
         201: $ref('createTransactionResponseSchema')
-      }
+      },
     }
   },
    transactionCreateHandler);
@@ -19,9 +19,20 @@ async function transactionsRoutes (server: FastifyInstance) {
       description: 'Obter a lista de transações',
       response:{
         200: $ref('transactionsResponseSchema')
+      },
+      querystring: {
+        type: 'object',
+        properties: {
+          id: { type: 'number' },
+          method: { 
+            type: 'string',
+            enum: [ 'pix', 'credit_card' ]
+          }
+        },
+        required: []
       }
     }
-  }, getAllTransactions);
+  }, getTransactionsHandler);
 }
 
 export default transactionsRoutes;

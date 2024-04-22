@@ -11,7 +11,6 @@ const server = Fastify({
   logger: true
 });
 
-
 //Documentation
 server.register(fastifySwagger, {
   swagger: {
@@ -76,4 +75,4 @@ server.listen(opts, function (err, address) {
   server.log.info(`server listening on ${address}`)
 });
 
-
+export default server;

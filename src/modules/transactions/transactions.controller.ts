@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { TransactionCreateInput, createTransactionSchema } from "./transaction.schema";
-import { createTransaction, getTransactions } from "./transactions.services";
+import { createTransaction, getAllTransactions, getTransactionsByID, getTransactionsByMethod } from "./transactions.services";
 import { createPayablesHandler } from "../payables/payables.controller";
 
 export async function transactionCreateHandler (
@@ -25,8 +25,28 @@ export async function transactionCreateHandler (
   }
 }
 
-export async function getAllTransactions( request: FastifyRequest, reply: FastifyReply ) {
-  const transaction = await getTransactions();
-  const code = transaction.length ? 200 : 204;
-  reply.code(code).send(transaction);
+export async function getTransactionsHandler( request: FastifyRequest<{
+  Querystring: {
+    id?: number,
+    method?: 'pix' | 'credit_card'
+  }
+}>, reply: FastifyReply ) {
+  const query = request.query;
+  let transactions = null;
+  
+  if(query?.id){
+    transactions = await getTransactionsByID(query.id);
+    if(!transactions) return reply.code(404).send({ message: 'Transaction not found'});
+    return reply.code(200).send([transactions]);
+  }
+
+  if(query?.method) {
+    transactions = await getTransactionsByMethod(query.method);
+    if(!transactions.length) return reply.code(204).send({ message: 'Transactions not found'});
+    return reply.code(200).send(transactions);
+  }
+
+  transactions = await getAllTransactions();
+  if(!transactions.length) return reply.code(204).send({ message: 'Transactions not found'});
+  return reply.code(200).send(transactions);
 }

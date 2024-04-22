@@ -36,13 +36,13 @@ export async function getPayablesHandler (request: FastifyRequest<{
 
   if(query?.status) {
     payables = await getPayablesByStatus(query.status);
-    if(!payables.length) return reply.code(404).send({ message: 'Payables not found' })
+    if(!payables.length) return reply.code(204).send({ message: 'Payables not found' })
     return reply.code(200).send(payables)
   }
 
   payables = await getPayables();
 
-  if(!payables.length) return reply.code(404).send({ message: 'Payables not found' })
+  if(!payables.length) return reply.code(204).send({ message: 'Payables not found' })
   return reply.code(200).send(payables)
 }
 
