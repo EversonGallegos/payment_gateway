@@ -5,6 +5,7 @@ import transactionsRoutes from './modules/transactions/transactions.route';
 import { transactionSchemas } from './modules/transactions/transaction.schema';
 import fastifySwagger from '@fastify/swagger';
 import fastifySwaggerUi from '@fastify/swagger-ui';
+import { payableSchemas } from './modules/payables/payables.schema';
 
 const server = Fastify({
   logger: true
@@ -30,7 +31,7 @@ server.register(fastifySwagger, {
 server.register(fastifySwaggerUi, {
   routePrefix: '/docs',
   uiConfig: {
-    docExpansion: 'full',
+    docExpansion: 'list',
     deepLinking: false
   },
   uiHooks: {
@@ -43,7 +44,7 @@ server.register(fastifySwaggerUi, {
   transformSpecificationClone: true
 })
 
-for(const schema of transactionSchemas) {
+for(const schema of [...transactionSchemas, ...payableSchemas]) {
   server.addSchema(schema);
 }
 
