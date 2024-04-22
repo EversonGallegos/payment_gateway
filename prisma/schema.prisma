@@ -31,8 +31,8 @@ model Transaction {
   name        String
   cpf         String
   card_number String?
-  valid       String?
-  cvv         String?
+  valid       Int?
+  cvv         Int?
   created_at  DateTime      @default(now())
   payable     Payable?
 }
