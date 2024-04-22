@@ -1,9 +1,9 @@
-### Payment Gateway
+# Payment Gateway
 
 ## Instalação
 
-1. Clone do projeto
-2. Executar o "docker compose up -d" no terminal
+1. Clone do projeto [https://github.com/EversonGallegos/payment_gateway.git]
+2. Executar o container docker com "docker compose up -d" no terminal
 3. Baixar as dependências do projeto com "yarn install"
 4. Executar o servidor com "yarn dev"
 
@@ -19,7 +19,7 @@
 
 ## Scripts
 
-# dev:
+### dev
 
 - **tsnd**: Inicia o ts-node-dev, que é uma ferramenta para desenvolvimento TypeScript que permite reinicialização automática do servidor Node.js sempre que arquivos são modificados.
 - **params**:
@@ -29,4 +29,4 @@
 
 ## Documentação da API
 
-/docs
+- /docs
