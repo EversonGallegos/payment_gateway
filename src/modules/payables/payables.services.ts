@@ -1,4 +1,5 @@
 import prisma from "../../utils/prisma";
+import { PaymentStatus } from "./helpers/get_dynamic_fields";
 import { PayableCreateInput } from "./payables.schema";
 
 export async function createPayable ( data : PayableCreateInput ) {
@@ -35,7 +36,7 @@ export async function confirmPayablePayment (id: number) {
   return payable
 }
 
-export async function getPayablesByStatus ( status: 'paid' | 'waiting_funds') {
+export async function getPayablesByStatus ( status: PaymentStatus) {
   const payables = await prisma.payable.findMany({
     where: {
       status

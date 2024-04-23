@@ -2,6 +2,7 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { TransactionCreateInput, createTransactionSchema } from "./transaction.schema";
 import { createTransaction, getAllTransactions, getTransactionsByID, getTransactionsByMethod } from "./transactions.services";
 import { createPayablesHandler } from "../payables/payables.controller";
+import { PaymentMethod } from "../payables/helpers/get_dynamic_fields";
 
 export async function transactionCreateHandler (
   request: FastifyRequest<{
@@ -28,7 +29,7 @@ export async function transactionCreateHandler (
 export async function getTransactionsHandler( request: FastifyRequest<{
   Querystring: {
     id?: number,
-    method?: 'pix' | 'credit_card'
+    method?: PaymentMethod
   }
 }>, reply: FastifyReply ) {
   const query = request.query;

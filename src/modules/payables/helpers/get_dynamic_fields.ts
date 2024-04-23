@@ -1,6 +1,6 @@
-type PaymentStatus = 'paid' | 'waiting_funds'
+export type PaymentStatus = 'paid' | 'waiting_funds'
 
-type PaymentMethod = 'pix' | 'credit_card'
+export type PaymentMethod = 'pix' | 'credit_card'
 
 type DynamicFields = {
   status: PaymentStatus,

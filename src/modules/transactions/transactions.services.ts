@@ -1,4 +1,5 @@
 import prisma from "../../utils/prisma";
+import { PaymentMethod } from "../payables/helpers/get_dynamic_fields";
 import { TransactionCreateInput } from "./transaction.schema";
 
 export async function createTransaction ( data: TransactionCreateInput ) {
@@ -18,7 +19,7 @@ export async function getTransactionsByID (id: number) {
   });
 }
 
-export async function getTransactionsByMethod (method: 'pix' | 'credit_card') {
+export async function getTransactionsByMethod (method: PaymentMethod) {
   return await prisma.transaction.findMany({
     where: {
       method

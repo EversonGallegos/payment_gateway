@@ -1,6 +1,6 @@
 import { TransactionCreateResponseInput } from "../transactions/transaction.schema";
 import { getBalance } from "./helpers/get_balance";
-import getDynamicFields from "./helpers/get_dynamic_fields";
+import getDynamicFields, { PaymentStatus } from "./helpers/get_dynamic_fields";
 import { confirmPayablePayment, createPayable, getPayableByID, getPayables, getPayablesByStatus } from "./payables.services";
 import { FastifyReply, FastifyRequest } from 'fastify';
 
@@ -20,7 +20,7 @@ export async function createPayablesHandler ( data: TransactionCreateResponseInp
 
 export async function getPayablesHandler (request: FastifyRequest<{
   Querystring: {
-    status?: 'paid' | 'waiting_funds',
+    status?: PaymentStatus,
     id?: number
   }
 }>, reply: FastifyReply) {
