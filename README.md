@@ -4,7 +4,8 @@
 
 1. Clone do projeto [git clone https://github.com/EversonGallegos/payment_gateway.git]
 2. Instalar do docker e ativá-lo
-3. Executar o projeto em containers docker com o comando "yarn start"
+3. Configure as variáveis de ambiente. Pode ser usado como base o .env.example.
+4. Executar o projeto em containers docker com o comando "yarn start"
 
 ## Testes
 
