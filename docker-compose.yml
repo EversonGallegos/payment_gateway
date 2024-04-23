@@ -18,3 +18,23 @@ services:
       POSTGRES_DB: pagouai
     ports:
       - "5432:5432"
+  nodejs-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - postgres-test
+    environment:
+      - PORT=3001
+      - HOST=0.0.0.0
+      - DATABASE_URL=postgresql://${DATABASE_LOGIN}:${DATABASE_PASSWORD}@postgres-test:5433/${DATABASE_NAME}?schema=public
+  postgres-test:
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: pagouai
+    ports:
+      - "5433:5433"
