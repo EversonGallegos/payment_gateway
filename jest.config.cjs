@@ -11,7 +11,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/tests/singleton.ts'],
+  setupFilesAfterEnv: ['<rootDir>/tests/loader.ts'],
   testPathIgnorePatterns: [
     '/node_modules/',
   ],
