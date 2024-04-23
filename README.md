@@ -2,11 +2,18 @@
 
 ## Instalação
 
-1. Clone do projeto [https://github.com/EversonGallegos/payment_gateway.git]
-2. Executar o container docker com "docker compose up -d" no terminal
-3. Baixar as dependências do projeto com "yarn install"
-4. Gerar as migrations do prisma com "npx prisma migrate dev --name init"
-5. Executar o servidor com "yarn dev"
+1. Clone do projeto [git clone https://github.com/EversonGallegos/payment_gateway.git]
+2. Instalar do docker e ativá-lo
+3. Executar o projeto em containers docker com o comando "yarn start"
+
+
+## Testes
+
+1. Executar o comando "yarn docker:test"
+
+Dois containers docker serão criados. O primeiro com o NodeJS V18 e outro com o postgres. As variáveis de ambiente estão definidas dentro do arquivo docker-compose.yml.
+
+##
 
 ## Tecnologias Utilizadas
 
