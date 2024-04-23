@@ -9,10 +9,7 @@
 
 ## Testes
 
-1. Executar o comando "yarn docker:test" para executar os testes dentro do container docker. 
-
-Obs: o comando deve ser usado após inicialização dos containers com "yarn start"
-
+1. Executar o comando "yarn start:test" para executar os testes dentro do container docker.
 
 ## Tecnologias Utilizadas
 
@@ -30,8 +27,7 @@ Obs: o comando deve ser usado após inicialização dos containers com "yarn sta
 Recomenda-se usar o yarn para execução dos scripts:
 
 - **start**: Executa o docker compose com todos os containers (nodeJS e postgress);
-- **docker:test**: Executa os testes do Jest dentro do container docker do nodeJS
-- **dev**: Inicia o servidor localmente usando o ts-node-dev
+- **start:test**: Executa os testes do Jest dentro do container docker do nodeJS
 - **nodemon**: Inicia o servidor localmente usando o nodemon
 - **migrate**: Gera as migrations do Prisma
 - **migrate:nodemon**: Gera as migrations do Prisma e em sequenquência inicia o nodemon
