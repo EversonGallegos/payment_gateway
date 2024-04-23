@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "tsnd --respawn --transpile-only --exit-child src/app.ts",
     "nodemon": "nodemon -I --exec node --experimental-specifier-resolution=node  --loader ts-node/esm ./src/app.ts",
+    "migrate": "npx prisma migrate dev --name development",
+    "migrate:nodemon": "yarn run migrate && yarn run nodemon",
     "test": "jest"
   },
   "keywords": [],

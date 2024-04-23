@@ -1,12 +1,13 @@
-ARG CACHEBUST=0
 # Use a imagem oficial do Node.js 20
-FROM node:20-alpine
+FROM node:18-alpine3.16
 
 # Crie e defina o diretório de trabalho no container
 WORKDIR /app
 
 # Copie o package.json e o yarn.lock para o diretório de trabalho
 COPY package.json ./
+
+COPY prisma ./prisma/
 
 # Instale as dependências usando o Yarn
 RUN yarn install
@@ -19,4 +20,4 @@ COPY . .
 EXPOSE 3000
 
 # Comando padrão para iniciar o servidor Fastify
-CMD ["yarn", "nodemon"]
+CMD ["yarn", "run", "migrate:nodemon"]

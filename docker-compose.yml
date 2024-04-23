@@ -5,11 +5,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Mapeie a porta do host para a porta do container (opcional, dependendo do uso)
+      - "3000:3000"
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://admin:admin@127.0.0.1:5432/pagouai?schema=public # Substitua as credenciais conforme necessário
+      - DATABASE_URL=postgresql://admin:admin@postgres:5432/pagouai?schema=public
   postgres:
     image: postgres
     environment:
@@ -17,4 +17,4 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: pagouai
     ports:
-      - "5432:5432" # Mapeie a porta do host para a porta do container (opcional, dependendo do uso)
+      - "5432:5432"
