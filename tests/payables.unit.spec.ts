@@ -48,26 +48,14 @@ describe('Testes unitários dos serviços do módulo payable', () => {
   })
 
   test('Deve obter um recebível pelo ID', async () => {
-    for(const data of payables) {
-      prismaMock.payable.create({ data })
-    }
-    const unique = prismaMock.payable.findUnique({
-      where: {
-        id: 1
-      }
-    })
-    await expect(getPayableByID(1)).resolves.toEqual(unique)
+    prismaMock.payable.findUnique.mockResolvedValue(payable)
+
+    await expect(getPayableByID(1)).resolves.toEqual(payable)
   })
 
   test('Deve obter um recebível pelo status', async () => {
-    for(const data of payables) {
-      prismaMock.payable.create({ data })
-    }
-    const payablesPaid = prismaMock.payable.findMany({
-      where: {
-        status: 'paid'
-      }
-    })
+    const payablesPaid = payables.filter((p) => p.status === 'paid')
+    prismaMock.payable.findMany.mockResolvedValue(payablesPaid)
     await expect(getPayablesByStatus('paid')).resolves.toEqual(payablesPaid)
   })
 
