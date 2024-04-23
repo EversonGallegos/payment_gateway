@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "e81789df-aa83-4fbb-b3e9-136b37192074",
+		"name": "PaymentGateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17768262"
+	},
+	"item": [
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "GET TRANSACTIONS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transaction",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE TRANSACTION",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"amount\": 1000,\n\t\"description\": \"Cafe\",\n\t\"method\": \"pix\",\n\t\"name\": \"John Doe\",\n\t\"cpf\": \"12345678900\",\n\t\"card_number\": null,\n\t\"valid\": null,\n\t\"cvv\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transaction",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payable",
+			"item": [
+				{
+					"name": "GET PAYABLES",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET BALANCE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/payable/balance",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payable",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PAYABLE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    id: 7\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/payable",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"payable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -40,3 +40,9 @@ Recomenda-se usar o yarn para execução dos scripts:
 ## Documentação da API
 
 - Após executar o projeto, acessar a rota http://localhost:3000/docs
+
+## Extras
+
+### Postman Collections
+
+JSON com collections da API exportadas do Postman na pasta /extras/collections/
